@@ -14,18 +14,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 
-var whitelist = ['http://localhost:3000']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('No estas autorizado'))
-    }
-  }
-}
 
-
+//app.get('/', cors(corsOptions), (req, res) =>{
 
 //Aqui puedes modificar el nombre de la API
 app.use("/api/newsletter",Users);
