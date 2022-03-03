@@ -23,8 +23,8 @@ const findById = (req,res) =>{
 const addUser = (req,res) =>{
     let user = new User({ 
         email: req.body.email,
-        username: req.body.username,
-        motivation: req.body.motivation
+        name: req.body.username,
+        message: req.body.message
        // wallet: req.body.wallet
 
      })
