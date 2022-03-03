@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Users = require('./api/users');
 
+const cors = require('cors');
 
 const app = express();
 
@@ -10,12 +11,20 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//Seguridad en la API
 app.use(cors());
 
-
-
-//app.get('/', cors(corsOptions), (req, res) =>{
+/*
+var whitelist = ['http://localhost:3001']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+*/
 
 //Aqui puedes modificar el nombre de la API
 app.use("/api/newsletter",Users);
