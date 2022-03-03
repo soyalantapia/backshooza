@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 
-var whitelist = ['http://localhost:3001'];
+var whitelist = ['http://localhost'];
 
 var corsOptions = {
   origin: function (origin, callback) {
