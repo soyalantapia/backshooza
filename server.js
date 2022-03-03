@@ -11,6 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//activo el protocolo de seguridad
 app.use(cors());
 
 /*
