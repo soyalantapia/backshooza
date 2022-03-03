@@ -14,14 +14,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 
-var whitelist = ['http://localhost'];
+var whitelist = [''];
 
 
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
-      console.log("Bienvenido a la api")
     } else {
       callback(new Error('Not allowed by CORS'))
     }
