@@ -15,7 +15,7 @@ app.use("/api/newsletter",Users);
 
 
 //puerto
-const port = 4000;
+const port = 3001;
 
 //mongo
 const mongo_uri = 'mongodb+srv://alantapia:2425cmpsm@cluster0.hozyc.mongodb.net/shooza?retryWrites=true&w=majority';
