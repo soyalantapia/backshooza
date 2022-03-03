@@ -14,7 +14,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 
-var whitelist = ['https://shooza.co/', 'http://localhost'];
+var whitelist = ['http://localhost:3001'];
+
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
