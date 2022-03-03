@@ -26,8 +26,9 @@ var corsOptions = {
 }
 
 
+
 //Aqui puedes modificar el nombre de la API
-app.use("/api/newsletter",Users);
+app.use("/api/newsletter", cors(corsOptions), Users);
 
 
 //puerto
