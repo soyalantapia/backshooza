@@ -36,7 +36,7 @@ app.use("/api/newsletter", Users);
 const port = 3001;
 
 //mongo
-const mongo_uri = 'mongodb+srv://alantapia:2425cmpsm@cluster0.hozyc.mongodb.net/shooza?retryWrites=true&w=majority';
+const mongo_uri = 'mongodb+srv://alantapia:2425cmpsm@cluster0.hozyc.mongodb.net/ejemplo?retryWrites=true&w=majority';
 
 //validacion de conexion mongo
 mongoose.connect(mongo_uri, function(err){

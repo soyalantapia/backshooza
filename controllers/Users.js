@@ -12,7 +12,7 @@ const findAllUsers = (req, res) =>{
 //Seleccionar un Usuario
 const findById = (req,res) =>{
     User.findById(req.params.id,(err, user)=>{
-        err && res.status(500).send(err.message);
+        err && res.status(500).send(err.name);
 
         res.status(200).json(user);
     })
