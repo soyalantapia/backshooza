@@ -7,15 +7,14 @@ const cors = require('cors');
 
 const app = express();
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //activo el protocolo de seguridad
 app.use(cors());
 
-/*
-var whitelist = ['http://localhost:3001']
+
+var whitelist = ['http://localhost:3001', 'https://shooza.co/']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -25,7 +24,7 @@ var corsOptions = {
     }
   }
 }
-*/
+
 
 //Aqui puedes modificar el nombre de la API
 app.use("/api/newsletter",Users);
