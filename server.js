@@ -14,11 +14,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 
+<<<<<<< HEAD
 var whitelist = ['https://shooza.co/', 'http://localhost']
+=======
+var whitelist = ['http://localhost:3001', 'https://shooza.co/', 'http://localhost'];
+>>>>>>> 7687dba0cd8fc3dccbfd7b6698d4a7897913efed
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
+      console.log("Bienvenido a la api")
     } else {
       callback(new Error('Not allowed by CORS'))
     }
