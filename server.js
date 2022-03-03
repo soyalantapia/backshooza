@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //activo el protocolo de seguridad
 app.use(cors());
 
-
+/*
 var whitelist = [''];
 
 
@@ -26,10 +26,10 @@ var corsOptions = {
     }
   }
 }
-
+*/
 
 //Aqui puedes modificar el nombre de la API
-app.use("/api/newsletter", cors(corsOptions), Users);
+app.use("/api/newsletter", Users);
 
 
 //puerto
