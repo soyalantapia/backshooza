@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Seguridad en la API
 app.use(cors());
 
+
 var whitelist = ['http://localhost:3000']
 var corsOptions = {
   origin: function (origin, callback) {
