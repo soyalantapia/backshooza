@@ -16,6 +16,7 @@ app.use(cors());
 
 var whitelist = ['http://localhost'];
 
+
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
