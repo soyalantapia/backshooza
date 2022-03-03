@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 
-var whitelist = ['http://localhost:3001', 'https://shooza.co/', 'http://localhost'];
+var whitelist = ['https://shooza.co/', 'http://localhost'];
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -25,7 +25,6 @@ var corsOptions = {
     }
   }
 }
-
 
 
 //Aqui puedes modificar el nombre de la API
