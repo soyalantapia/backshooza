@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const Users = require('./api/users');
 const Users_whitelist = require('./api/users_whitelist');
 
-
 const cors = require('cors');
 
 const app = express();
