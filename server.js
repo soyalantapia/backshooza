@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
 const Users = require('./api/users');
+const Users_whitelist = require('./api/users_whitelist');
+
 
 const cors = require('cors');
 
@@ -29,14 +32,17 @@ var corsOptions = {
 */
 
 //Aqui puedes modificar el nombre de la API
+app.use("/api/whitelist", Users_whitelist);
+
 app.use("/api/newsletter", Users);
+
 
 
 //puerto
 const port = 3001;
 
 //mongo
-const mongo_uri = 'mongodb+srv://alantapia:2425cmpsm@cluster0.hozyc.mongodb.net/ejemplo?retryWrites=true&w=majority';
+const mongo_uri = 'mongodb+srv://alantapia:2425cmpsm@cluster0.hozyc.mongodb.net/shooza?retryWrites=true&w=majority';
 
 //validacion de conexion mongo
 mongoose.connect(mongo_uri, function(err){
