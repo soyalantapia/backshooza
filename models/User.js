@@ -5,9 +5,9 @@ const Shema = mongoose.Shema;
 const UserSchema = new mongoose.Schema({
     email: {type:String,  required:true, unique:true},
     name: {type:String, required:true, unique:true},
-    message: {type:String, required:true},
-    //wallet: {type:String},
+    message: {type:String, required:true, unique:true},
 });
 
 
-module.exports = User = mongoose.model('User',UserSchema);
+
+module.exports = User = mongoose.model('users',UserSchema);

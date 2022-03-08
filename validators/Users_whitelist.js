@@ -1,5 +1,6 @@
 const {body, validationResult} = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper_whitelist')
+const User = require('../models/User_whitelist')
 
 
 //Validacion de datos
@@ -19,4 +20,3 @@ const validateCreate = [
 ]
 
 module.exports = { validateCreate }
-
