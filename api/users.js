@@ -1,7 +1,8 @@
 const userController = require('../controllers/Users'); 
 const express = require('express');
 const router = express.Router();
-const { validateCreate } = require('../validators/Users')
+const { validateCreate } = require('../validators/Users');
+const userControllerRe = require('../controllers/recaptcha'); 
 
 //Endpoints
 router.get('/all', userController.findAllUsers);

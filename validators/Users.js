@@ -2,6 +2,8 @@ const {body, validationResult} = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper')
 
 
+
+
 //Validacion de datos
 const validateCreate = [
     //validacion
@@ -14,7 +16,8 @@ const validateCreate = [
    /*  body('wallet', 'Ingrese un Wallet valido')   
         .exists() .isLength({min:5}) .not() .isEmpty() .trim() .escape() .blacklist(), */
         (req, res, next) => {
-            validateResult(req, res, next)
+                validateResult(req, res, next)
+         
         }
 ]
 

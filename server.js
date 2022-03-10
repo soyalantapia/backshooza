@@ -1,14 +1,20 @@
+const path = require('path');
+const request = require('request');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-const Users = require('./api/users');
-const Users_whitelist = require('./api/users_whitelist');
-
 const cors = require('cors');
 
-const app = express();
 
+//Declaracion de APIS
+const Users = require('./api/users');
+const Users_whitelist = require('./api/users_whitelist');
+const recaptcha = require('./api/recaptcha');
+
+
+
+
+const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -35,6 +41,7 @@ app.use("/api/whitelist", Users_whitelist);
 
 app.use("/api/newsletter", Users);
 
+app.use("/api/recaptcha", recaptcha);
 
 
 //puerto
@@ -51,6 +58,7 @@ mongoose.connect(mongo_uri, function(err){
         console.log('Conexion exitosa a la bd')
     }
 })
+
 
 
 //escuchando el puerto
