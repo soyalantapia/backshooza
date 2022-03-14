@@ -6,10 +6,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 
+const dotenv = require('dotenv').config();
+
+
 //Declaracion de APIS
 const Users = require('./api/users');
 const Users_whitelist = require('./api/users_whitelist');
 const recaptcha = require('./api/recaptcha');
+
 
 
 
@@ -44,8 +48,13 @@ app.use("/api/newsletter", Users);
 app.use("/api/recaptcha", recaptcha);
 
 
+
+const puerto = process.env.PORT;
+console.log(puerto);
+
+
 //puerto
-const port = 3001;
+const port = process.env.PORT;
 
 //mongo
 const mongo_uri = 'mongodb+srv://alantapia:2425cmpsm@cluster0.hozyc.mongodb.net/shooza?retryWrites=true&w=majority';
