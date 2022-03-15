@@ -5,6 +5,9 @@ const request = require('request');
 const { exists } = require('../models/User');
 
 
+//Variables de entorno
+require('dotenv').config();
+
 //Buscar todos los usuarios
 const findAllUsers = (req, res) =>{
     User.find((err,users) => {
@@ -31,12 +34,13 @@ const addUser = (req,res) =>{
   {
     return res.json({"responseError" : "Algo esta saliendo mal"});
   }
-  const secretKey = "6Ld_1sYeAAAAAEGrma3jj5S6E4mKAPf5rnx098Rm";
+  const secretKey = process.env.SECRET_KEY_RECAPTCHA;
+  
   const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
   request(verificationURL,function(error,response,body) {
     body = JSON.parse(body);
 
-    //Si la conexion funcia mal lanza el siguiente error
+    //Si la conexion funciona mal lanza el siguiente error
     if(body.success !== undefined && !body.success) {
       return res.json({"responseError" : "Error Recaptcha, fracaso validacion"});
     }else{
@@ -54,6 +58,33 @@ const addUser = (req,res) =>{
              err && res.status(500).send(err.message);
              res.status(200).json({"responseSuccess" : "recaptcha exito", usr});
          })
+        
+         //Conexion con mailerlite para subir los email a un base de datos externa
+         var request = require('request');
+          var options = {
+            'method': 'POST',
+            'url': 'https://api.mailerlite.com/api/v2/subscribers',
+            'headers': {
+              'X-MailerLite-ApiKey': '3df4346d696c3ef5510ab772f2ebb85f',
+              'Content-Type': 'application/json',
+              'Cookie': 'PHPSESSID=3ba7202d14ff5c93df070cfddde703d9'
+            },
+
+            body: JSON.stringify({
+              "email": req.body.email,
+              "resubscribe": false,
+              "type": "active",
+              "name": req.body.name
+            })
+
+          };
+          request(options, function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.body);
+          });
+
+      
+
         };
          
     } //Cierre del if

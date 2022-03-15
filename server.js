@@ -5,23 +5,23 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-
-const dotenv = require('dotenv').config();
-
-
 //Declaracion de APIS
 const Users = require('./api/users');
 const Users_whitelist = require('./api/users_whitelist');
 const recaptcha = require('./api/recaptcha');
 
-
-
+//Variables de entorno
+require('dotenv').config();
 
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 //activo el protocolo de seguridad
 app.use(cors());
 
@@ -42,22 +42,14 @@ var corsOptions = {
 
 //Aqui puedes modificar el nombre de la API
 app.use("/api/whitelist", Users_whitelist);
-
 app.use("/api/newsletter", Users);
-
 app.use("/api/recaptcha", recaptcha);
-
-
-
-const puerto = process.env.PORT;
-console.log(puerto);
-
 
 //puerto
 const port = process.env.PORT;
 
 //mongo
-const mongo_uri = 'mongodb+srv://alantapia:2425cmpsm@cluster0.hozyc.mongodb.net/shooza?retryWrites=true&w=majority';
+const mongo_uri = process.env.MONGODB_URI;
 
 //validacion de conexion mongo
 mongoose.connect(mongo_uri, function(err){
@@ -68,6 +60,7 @@ mongoose.connect(mongo_uri, function(err){
     }
 })
 
+app.use(express.static('public'));
 
 
 //escuchando el puerto

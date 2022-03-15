@@ -2,8 +2,6 @@ const {body, validationResult} = require('express-validator');
 const { validateResult } = require('../helpers/validateHelper')
 
 
-
-
 //Validacion de datos
 const validateCreate = [
     //validacion
@@ -17,7 +15,6 @@ const validateCreate = [
         .exists() .isLength({min:5}) .not() .isEmpty() .trim() .escape() .blacklist(), */
         (req, res, next) => {
                 validateResult(req, res, next)
-         
         }
 ]
 

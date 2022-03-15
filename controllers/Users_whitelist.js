@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 const User = require('../models/User_whitelist')
 
+//Variables de entorno
+require('dotenv').config();
+
+
 //Buscar todos los usuarios
 const findAllUsers = (req, res) =>{
     User.find((err,users) => {
@@ -44,7 +48,8 @@ const addUser = (req,res) =>{
   {
     return res.json({"responseError" : "Algo esta saliendo mal"});
   }
-  const secretKey = "6Ld_1sYeAAAAAEGrma3jj5S6E4mKAPf5rnx098Rm";
+  const secretKey = process.env.SECRET_KEY_RECAPTCHA;
+  
   const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
   request(verificationURL,function(error,response,body) {
     body = JSON.parse(body);

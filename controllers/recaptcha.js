@@ -1,3 +1,6 @@
+//Variables de entorno
+require('dotenv').config();
+
 const request = require('request');
 const recaptcha = (req, res) =>{
     //Si no se manda los datos desde el front lanza error de "algo esta saliendo mal"
