@@ -32,7 +32,7 @@ const addUser = (req,res) =>{
     //Si no se manda los datos desde el front lanza error de "algo esta saliendo mal"
   if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
   {
-    return res.json({"responseError" : "Algo esta saliendo mal"});
+    return res.json({"responseError" : "Error de credenciales"});
   }
   const secretKey = process.env.SECRET_KEY_RECAPTCHA;
   
@@ -47,22 +47,19 @@ const addUser = (req,res) =>{
     let respuesta = true
     if(respuesta === true ){ 
     
-        let user = new User({ 
-            email: req.body.email,
-            name: req.body.name,
-            message: req.body.message
-          })
-         user.save((err,usr)=>{
-             err && res.status(500).send(err.message);
-             res.status(200).json({"responseSuccess" : "recaptcha exito", usr});
-         })      
+          let user = new User({ 
+              email: req.body.email,
+              name: req.body.name,
+              message: req.body.message
+            })
+          user.save((err,usr)=>{
+              err && res.status(500).send(err.message);
+              res.status(200).json({"responseSuccess" : "recaptcha exito", usr});
+          })      
          };
 
-         
-    } //Cierre del if
-
-    /* -------- AGREGAR UN USUARIO -> CONEXION CON MAILERLITE -------- */
-         var request = require('request');
+          /* -------- AGREGAR UN USUARIO -> CONEXION CON MAILERLITE -------- */
+          var request = require('request');
           var options = {
             'method': 'POST',
             'url': 'https://api.mailerlite.com/api/v2/subscribers',
@@ -83,8 +80,10 @@ const addUser = (req,res) =>{
           request(options, function (error, response) {
             if (error) throw new Error(error);
             console.log(response.body);
-          });
-          //Fin de conexion con mailerlite
+          }); //Fin de conexion con mailerlite 
+    } //Cierre del if
+
+   
 });
 
 };
