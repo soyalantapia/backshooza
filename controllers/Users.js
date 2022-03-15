@@ -58,33 +58,34 @@ const addUser = (req,res) =>{
          })      
          };
 
-         /* -------- AGREGAR UN USUARIO -> CONEXION CON MAILERLITE -------- */
-         var request = require('request');
-          var options = {
-            'method': 'POST',
-            'url': 'https://api.mailerlite.com/api/v2/subscribers',
-            'headers': {
-              'X-MailerLite-ApiKey': '3df4346d696c3ef5510ab772f2ebb85f',
-              'Content-Type': 'application/json',
-              'Cookie': 'PHPSESSID=3ba7202d14ff5c93df070cfddde703d9'
-            },
-
-            body: JSON.stringify({
-              "email": req.body.email,
-              "resubscribe": false,
-              "type": "active",
-              "name": req.body.name
-            })
-
-          };
-          request(options, function (error, response) {
-            if (error) throw new Error(error);
-            console.log(response.body);
-          });
-          //Fin de conexion con mailerlite
-
          
     } //Cierre del if
+
+    /* -------- AGREGAR UN USUARIO -> CONEXION CON MAILERLITE -------- */
+    var request = require('request');
+    var options = {
+      'method': 'POST',
+      'url': 'https://api.mailerlite.com/api/v2/subscribers',
+      'headers': {
+        'X-MailerLite-ApiKey': '3df4346d696c3ef5510ab772f2ebb85f',
+        'Content-Type': 'application/json',
+        'Cookie': 'PHPSESSID=3ba7202d14ff5c93df070cfddde703d9'
+      },
+
+      body: JSON.stringify({
+        "email": req.body.email,
+        "resubscribe": false,
+        "type": "active",
+        "name": req.body.name
+      })
+
+    };
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      console.log(response.body);
+    });
+    //Fin de conexion con mailerlite
+    
 });
 
 };
