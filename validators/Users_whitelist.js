@@ -3,9 +3,8 @@ const { validateResult } = require('../helpers/validateHelper_whitelist')
 const User = require('../models/User_whitelist')
 
 
-//Validacion de datos
+ /* -------- VALIDACION DE DATOS  -------- */
 const validateCreate = [
-    //validaciones
     body('email', 'Ingrese un email valido')
     .isEmail() .normalizeEmail(),
     body('name','Ingrese un nombre de usuario valido')

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Shema = mongoose.Shema;
 
-//Creando el modulo de la base de datos
+ /* -------- ESTRUCTURA DE LA BASE DE DATOS -------- */
 const UserSchema = new mongoose.Schema({
     email: {type:String,  required:true, unique:true},
     name: {type:String, required:true, unique:true},

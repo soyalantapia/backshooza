@@ -8,7 +8,7 @@ const { exists } = require('../models/User');
 //Variables de entorno
 require('dotenv').config();
 
-//Buscar todos los usuarios
+/* -------- BUSCA TODOS LOS USUARIOS -------- */
 const findAllUsers = (req, res) =>{
     User.find((err,users) => {
         err && res.status(500).send(err.message);
@@ -16,7 +16,7 @@ const findAllUsers = (req, res) =>{
     })
 } 
 
-//Seleccionar un Usuario
+/* -------- SELECCIONAR UN USUARIO-------- */
 const findById = (req,res) =>{
     User.findById(req.params.id,(err, user)=>{
         err && res.status(500).send(err.name);
@@ -26,7 +26,7 @@ const findById = (req,res) =>{
 } 
 
 
-//Agregar un usuario
+/* --------- AGREGAR UN USUARIO -------- */
 const addUser = (req,res) =>{
 
     //Si no se manda los datos desde el front lanza error de "algo esta saliendo mal"
@@ -51,15 +51,14 @@ const addUser = (req,res) =>{
             email: req.body.email,
             name: req.body.name,
             message: req.body.message
-           // wallet: req.body.wallet
-    
-         })
+          })
          user.save((err,usr)=>{
              err && res.status(500).send(err.message);
              res.status(200).json({"responseSuccess" : "recaptcha exito", usr});
-         })
-        
-         //Conexion con mailerlite para subir los email a un base de datos externa
+         })      
+         };
+
+         /* -------- AGREGAR UN USUARIO -> CONEXION CON MAILERLITE -------- */
          var request = require('request');
           var options = {
             'method': 'POST',
@@ -82,16 +81,13 @@ const addUser = (req,res) =>{
             if (error) throw new Error(error);
             console.log(response.body);
           });
+          //Fin de conexion con mailerlite
 
-      
-
-        };
          
     } //Cierre del if
 });
 
 };
 
-
-//Exportando funciones
+/* -------- EXPORTANDO FUNCIONES -------- */
 module.exports = {findAllUsers, findById, addUser}; 

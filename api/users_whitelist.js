@@ -3,21 +3,21 @@ const express = require('express');
 const router = express.Router();
 const { validateCreate } = require('../validators/Users_whitelist')
 
-// --- Endpoints ---
+/* -------- ENDPOINTS -------- */
 
-//Todos los usuarios  
+/* -------- ENDPOINTS -> TODOS LOS USUARIOS -------- */
 router.get('/all', userController.findAllUsers);
 
-//Todos los usuarios de la whitelist
+/* -------- ENDPOINTS -> TODOS LOS USUARIOS DE LA WHITELIST -------- */
 router.get('/verifiedall', userController.verificacionWhitelist);
 
-//Todos los usuarios de la whitelist
+/* -------- ENDPOINTS -> VERIFICA UNA WALLET -------- */
 router.get('/:wallet', userController.verificacionAddress);
 
-//Buscar por ID
+/* -------- ENDPOINTS -> BUSCA POR ID UN USUARIO -------- */
 router.get('/:id', userController.findById);
 
-//Ruta para agregar un usuario. validaCreate es la validacion si los datos son correctos
+/* -------- ENDPOINTS -> AGREGAR UN USUARIO -------- */
 router.post('/add', validateCreate ,userController.addUser);
 
 module.exports = router;

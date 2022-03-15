@@ -1,0 +1,29 @@
+<form method="post" action="http://localhost:3001/api/newsletter/add">
+    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+    <input type="hidden" name="action" value="validate_captcha"> 
+
+        <input type="email" class="form-control" name="email">
+        <input type="text" class="form-control" name="name">
+        <input type="message" class="form-control" name="message">
+
+        <button type="submit" class="btn btn-success" style="margin-left:38px">Send</button>
+      </div>
+    </div>
+  </form>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Ld_1sYeAAAAAIBPNrhG6YrkCtGG9DZppuLN3Gwp"></script>
+<script>
+grecaptcha.ready(function() {
+// do request for recaptcha token
+// response is promise with passed token
+    grecaptcha.execute('6Ld_1sYeAAAAAIBPNrhG6YrkCtGG9DZppuLN3Gwp', {action:'validate_captcha'})
+              .then(function(token) {
+        // add token value to form
+        document.getElementById('g-recaptcha-response').value = token;
+    });
+});
+
+
+</script>
+</body>
+</html>

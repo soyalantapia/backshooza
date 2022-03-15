@@ -5,21 +5,30 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-//Declaracion de APIS
-const Users = require('./api/users');
-const Users_whitelist = require('./api/users_whitelist');
-const recaptcha = require('./api/recaptcha');
-
-//Variables de entorno
-require('dotenv').config();
-
-
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-//activo el protocolo de seguridad
+ /* -------- VARIABLE DE ENTORNO -------- */
+ require('dotenv').config();
+
+ /* -------- AUTENTICACION JTW  -------- */
+const jwt = require('jsonwebtoken');
+const config = require('./configs/config');
+
+ /* -------- DECLARACION DE APIS -------- */
+const Users = require('./api/users');
+const Users_whitelist = require('./api/users_whitelist');
+const recaptcha = require('./api/recaptcha');
+
+ /* -------- NOMBRES DE APIS  -------- */
+ app.use("/api/whitelist", Users_whitelist);
+ app.use("/api/newsletter", Users);
+ app.use("/api/recaptcha", recaptcha);
+ 
+
+ /* -------- PROTOCOLO DE SEGURIDAD -------- */
 app.use(cors());
 
 /*
@@ -37,18 +46,8 @@ var corsOptions = {
 }
 */
 
-//Aqui puedes modificar el nombre de la API
-app.use("/api/whitelist", Users_whitelist);
-app.use("/api/newsletter", Users);
-app.use("/api/recaptcha", recaptcha);
-
-//puerto
-const port = process.env.PORT;
-
-//mongo
+ /* -------- DATABASE CONNECT -------- */
 const mongo_uri = process.env.MONGODB_URI;
-
-//validacion de conexion mongo
 mongoose.connect(mongo_uri, function(err){
     if (err){
         throw err;
@@ -57,10 +56,13 @@ mongoose.connect(mongo_uri, function(err){
     }
 })
 
-app.use(express.static('public'));
+ /* -------- MOSTRAR PAGINA ESTATICA  -------- */
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
-
-//escuchando el puerto
+ /* -------- LEVANTANDO SERVIDOR -------- */
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Abierto el puerto ${port}!`))
 
 module.exports = app;
