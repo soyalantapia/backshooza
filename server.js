@@ -3,12 +3,14 @@ const request = require('request');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+ /* -------- PROTOCOLO DE SEGURIDAD -------- */
+ const cors = require('cors');
+ app.use(cors());
 
  /* -------- VARIABLE DE ENTORNO -------- */
  require('dotenv').config();
