@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const User = require('../models/User')
-const recaptcha = require('../controllers/recaptcha'); 
 const request = require('request');
 const { exists } = require('../models/User');
 
