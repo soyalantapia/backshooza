@@ -130,10 +130,3 @@ const addUser = (req,res) =>{
 //Exportando funciones
  
 module.exports = {findAllUsers,FuncionEleccionGanadores, verificacionWhitelist, verificacionAddress, findById, addUser}; 
-  
-module.exports = {findAllUsers, verificacionWhitelist, verificacionAddress, findById, addUser}; 
-     
-  
-module.exports = {findAllUsers, verificacionWhitelist, verificacionAddress, findById, addUser}; 
-    
-
