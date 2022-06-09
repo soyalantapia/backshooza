@@ -67,6 +67,7 @@ mongoose.connect(mongo_uri, function(err){
   res.sendFile(__dirname + '/index.html');
 });
 
+
  /* -------- LEVANTANDO SERVIDOR -------- */
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Abierto el puerto ${port}!`))
