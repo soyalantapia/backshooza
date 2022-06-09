@@ -1,12 +1,16 @@
-<<<<<<< HEAD
+ 
 const mongoose = require('mongoose');
 const User = require('../models/User_whitelist');
 const request = require('request');
 
-=======
+  
 const mongoose = require('mongoose')
 const User = require('../models/User_whitelist')
->>>>>>> parent of 0f1a862 (Primer deploy)
+     
+  
+const mongoose = require('mongoose')
+const User = require('../models/User_whitelist')
+    
 
 //Variables de entorno
 require('dotenv').config();
@@ -21,7 +25,7 @@ const findAllUsers = (req, res) =>{
 } 
 
 
-<<<<<<< HEAD
+ 
   
 
 //Buscar todos los usuarios
@@ -42,12 +46,17 @@ const findAllUsers = (req, res) =>{
 //Traer a todos que estan en la whitelist 
 const verificacionWhitelist = (req, res) =>{
     User.find({validation: 'true'},(err,users) => {
-=======
+  
+  
+    
 //Traer a todos que estan en la whitelist 
 const verificacionWhitelist = (req, res) =>{
     User.find({validation: 'true'},(err,users) => {
 
->>>>>>> parent of 0f1a862 (Primer deploy)
+   
+     
+  
+    
         err && res.status(500).send(err.message);
         res.status(200).json(users);
 
@@ -72,10 +81,13 @@ const verificacionAddress = (req,res) =>{
 
 //Agregar un usuario
 const addUser = (req,res) =>{
-<<<<<<< HEAD
-=======
+ 
+  
 
->>>>>>> parent of 0f1a862 (Primer deploy)
+     
+  
+
+    
     //Si no se manda los datos desde el front lanza error de "algo esta saliendo mal"
   if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
   {
@@ -116,9 +128,12 @@ const addUser = (req,res) =>{
 
 
 //Exportando funciones
-<<<<<<< HEAD
+ 
 module.exports = {findAllUsers,FuncionEleccionGanadores, verificacionWhitelist, verificacionAddress, findById, addUser}; 
-=======
+  
 module.exports = {findAllUsers, verificacionWhitelist, verificacionAddress, findById, addUser}; 
->>>>>>> parent of 0f1a862 (Primer deploy)
+     
+  
+module.exports = {findAllUsers, verificacionWhitelist, verificacionAddress, findById, addUser}; 
+    
 

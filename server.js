@@ -44,34 +44,13 @@ const autenticar = require('./api/autenticar');
 
 
  /* -------- NOMBRES DE APIS  -------- */
-<<<<<<< HEAD:src/server.js
-<<<<<<< HEAD:server.js
-=======
->>>>>>> parent of 0f1a862 (Primer deploy):server.js
  app.use("/api/whitelist", Users_whitelist);
  app.use("/api/newsletter", Users);
  app.use("/api", autenticar);
  
-<<<<<<< HEAD:src/server.js
- /* -------- DATABASE CONNECT -------- */
-const mongo_uri = process.env.MONGODB_URI;
-mongoose.connect(mongo_uri, function(err){
-    if (err){
-        throw err;
-    }else{
-        console.log('Conexion exitosa a la bd')
-    }
-})
-=======
- app.use("/api/", Login);
- app.use("/api/", Register);
- app.use("/api/", autenticar);
-=======
 
 
->>>>>>> parent of 0f1a862 (Primer deploy):server.js
 
->>>>>>> 0f1a8627bdcfc59f175af5c3444cce25cb6cbc1b:src/server.js
 
  /* -------- DATABASE CONNECT -------- */
 const mongo_uri = process.env.MONGODB_URI;

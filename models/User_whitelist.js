@@ -8,11 +8,14 @@ const UserSchema = new mongoose.Schema({
     phone: {type:Number, required:true, unique:true},
     wallet: {type:String, required:true, unique:true},
     validation: {type: Boolean, default: false},
-<<<<<<< HEAD
+ 
     created: { type: Date, default: Date.now},
-=======
+  
 
->>>>>>> parent of 0f1a862 (Primer deploy)
+     
+  
+
+    
 });
 
 
