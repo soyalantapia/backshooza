@@ -42,21 +42,10 @@ const findAllUsers = (req, res) =>{
 
 
 
-
-//Traer a todos que estan en la whitelist 
-const verificacionWhitelist = (req, res) =>{
-    User.find({validation: 'true'},(err,users) => {
-  
-  
     
 //Traer a todos que estan en la whitelist 
 const verificacionWhitelist = (req, res) =>{
     User.find({validation: 'true'},(err,users) => {
-
-   
-     
-  
-    
         err && res.status(500).send(err.message);
         res.status(200).json(users);
 
