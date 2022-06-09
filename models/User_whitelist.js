@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     phone: {type:Number, required:true, unique:true},
     wallet: {type:String, required:true, unique:true},
     validation: {type: Boolean, default: false},
-
+    created: { type: Date, default: Date.now},
 });
 
 

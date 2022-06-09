@@ -30,4 +30,4 @@ if(req.body.usuario === "goni" && req.body.contrasena === "123") {
 }
 })
 
-module.exports = router;
+module.exports = router; 

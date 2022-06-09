@@ -48,10 +48,6 @@ const autenticar = require('./api/autenticar');
  app.use("/api/newsletter", Users);
  app.use("/api", autenticar);
  
-
-
-
-
  /* -------- DATABASE CONNECT -------- */
 const mongo_uri = process.env.MONGODB_URI;
 mongoose.connect(mongo_uri, function(err){

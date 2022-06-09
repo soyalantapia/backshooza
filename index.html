@@ -1,32 +1,30 @@
-<form method="post" action="https://api.shooza.co/api/newsletter/add">
-    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-    <input type="hidden" name="action" value="validate_captcha"> 
+<h1>Bienvenido</h1>
+<form method="post" action="http://localhost:3001/api/whitelist/add">
+  <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+  <input type="hidden" name="action" value="validate_captcha"> 
 
-        <input type="email" class="form-control" name="email">
-        <input type="text" class="form-control" name="name">
-        <input type="message" class="form-control" name="message">
+      <input type="email" class="form-control" name="email">
+      <input type="text" class="form-control" name="name">
+      <input type="phone" class="form-control" name="phone">
+      <input type="wallet" class="form-control" name="wallet">
 
-        <button type="submit" class="btn btn-success" style="margin-left:38px">Send</button>
-      </div>
+      <button type="submit" class="btn btn-success" style="margin-left:38px">enviar</button>
     </div>
-  </form>
+  </div>
+</form>
 
 <script src="https://www.google.com/recaptcha/api.js?render=6Ld_1sYeAAAAAIBPNrhG6YrkCtGG9DZppuLN3Gwp"></script>
 <script>
-var myHeaders = new Headers();
-myHeaders.append("Access-Control-Allow-Origin", "*");
-myHeaders.append("Content-Type", "application/json");
+grecaptcha.ready(function() {
+// do request for recaptcha token
+// response is promise with passed token
+  grecaptcha.execute('6Ld_1sYeAAAAAIBPNrhG6YrkCtGG9DZppuLN3Gwp', {action:'validate_captcha'})
+            .then(function(token) {
+      // add token value to form
+      document.getElementById('g-recaptcha-response').value = token;
+  });
+});
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
-
-fetch("http://localhost:3001/api/newsletter/all", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
 
 </script>
 </body>
