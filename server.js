@@ -63,7 +63,7 @@ mongoose.connect(mongo_uri, function(err){
 })
 
  /* -------- MOSTRAR PAGINA ESTATICA  -------- */
-app.get('/', (req, res) => {
+ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
