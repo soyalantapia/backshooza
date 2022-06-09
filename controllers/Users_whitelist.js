@@ -3,13 +3,6 @@ const mongoose = require('mongoose');
 const User = require('../models/User_whitelist');
 const request = require('request');
 
-  
-const mongoose = require('mongoose')
-const User = require('../models/User_whitelist')
-     
-  
-const mongoose = require('mongoose')
-const User = require('../models/User_whitelist')
     
 
 //Variables de entorno
@@ -26,7 +19,6 @@ const findAllUsers = (req, res) =>{
 
 
  
-  
 
 //Buscar todos los usuarios
  const FuncionEleccionGanadores = (req, res) =>{
@@ -39,7 +31,6 @@ const findAllUsers = (req, res) =>{
         });
     };
 }
-
 
 
     
@@ -70,12 +61,6 @@ const verificacionAddress = (req,res) =>{
 
 //Agregar un usuario
 const addUser = (req,res) =>{
- 
-  
-
-     
-  
-
     
     //Si no se manda los datos desde el front lanza error de "algo esta saliendo mal"
   if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
@@ -118,4 +103,4 @@ const addUser = (req,res) =>{
 
 //Exportando funciones
  
-module.exports = {findAllUsers,FuncionEleccionGanadores, verificacionWhitelist, verificacionAddress, findById, addUser}; 
+module.exports = {findAllUsers,FuncionEleccionGanadores, verificacionWhitelist, verificacionAddress, findById, addUser};

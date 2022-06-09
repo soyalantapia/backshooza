@@ -21,7 +21,7 @@ router.post('/add', userController.addUser);
   
   
     
-router.get('/all',rutasProtegidas,/* cors(corsOptions), */userController.findAllUsers);
+router.get('/all',/* cors(corsOptions), */userController.findAllUsers);
 
 /* -------- ENDPOINTS -> BUSCA POR ID UN USUARIO -------- */
 router.get('/:id', rutasProtegidas, userController.findById);
