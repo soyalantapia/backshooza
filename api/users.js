@@ -10,16 +10,6 @@ const { rutasProtegidas } = require('../security/jwt');
 /* -------- ENDPOINTS -------- */
 
 /* -------- ENDPOINTS -> TODOS LOS USUARIOS -------- */
- 
-router.get('/all',/* cors(corsOptions), */userController.findAllUsers);
-
-/* -------- ENDPOINTS -> BUSCA POR ID UN USUARIO -------- */
-router.get('/:id', userController.findById);
-
-/* -------- ENDPOINTS -> AGREGAR UN USUARIO -------- */
-router.post('/add', userController.addUser);
-  
-  
     
 router.get('/all',/* cors(corsOptions), */userController.findAllUsers);
 
