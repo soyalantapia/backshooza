@@ -10,6 +10,7 @@ const { rutasProtegidas } = require('../security/jwt');
 /* -------- ENDPOINTS -------- */
 
 /* -------- ENDPOINTS -> TODOS LOS USUARIOS -------- */
+<<<<<<< HEAD
 router.get('/all',/* cors(corsOptions), */userController.findAllUsers);
 
 /* -------- ENDPOINTS -> BUSCA POR ID UN USUARIO -------- */
@@ -17,5 +18,14 @@ router.get('/:id', userController.findById);
 
 /* -------- ENDPOINTS -> AGREGAR UN USUARIO -------- */
 router.post('/add', userController.addUser);
+=======
+router.get('/all',rutasProtegidas,/* cors(corsOptions), */userController.findAllUsers);
+
+/* -------- ENDPOINTS -> BUSCA POR ID UN USUARIO -------- */
+router.get('/:id', rutasProtegidas, userController.findById);
+
+/* -------- ENDPOINTS -> AGREGAR UN USUARIO -------- */
+router.post('/add',rutasProtegidas, validateCreate ,userController.addUser);
+>>>>>>> parent of 0f1a862 (Primer deploy)
 
 module.exports = router;
