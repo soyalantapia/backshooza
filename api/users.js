@@ -17,7 +17,7 @@ router.get('/all',/* cors(corsOptions), */userController.findAllUsers);
 router.get('/:id', rutasProtegidas, userController.findById);
 
 /* -------- ENDPOINTS -> AGREGAR UN USUARIO -------- */
-router.post('/add',rutasProtegidas, validateCreate ,userController.addUser);
+router.post('/add', /*rutasProtegidas,*/ validateCreate ,userController.addUser);
    
      
 
